@@ -5,8 +5,8 @@
 
 ## 登录接口
 ### 接口URL
-* 线上环境: http://online/v1/zx_xyb_common.login
-* 线下环境: http://10.20.17.61/v1/zx_xyb_common.login
+* 线上环境: http://online/blog/login.do
+* 线下环境: http://10.20.17.61/blog/login.do
 
 ### 请求方法
 __post__
@@ -56,8 +56,8 @@ __post__
 
 ## 博客列表接口
 ### 接口URL
-* 线上环境: http://online/v1/zx_xyb_common.gLogin
-* 线下环境: http://10.20.17.61/v1/zx_xyb_common.gLogin
+* 线上环境: http://online/blog/queryArticles.do
+* 线下环境: http://10.20.17.61/blog/queryArticles.do
 
 ### 请求方法
 __get__
@@ -115,8 +115,8 @@ __get__
 
 ## 插入博客接口
 ### 接口URL
-* 线上环境: http://online/v1/zx_xyb_common.checkPhone
-* 线下环境: http://10.20.17.61/v1/zx_xyb_common.checkPhone
+* 线上环境: http://online/blog/insertArticle.do
+* 线下环境: http://10.20.17.61/blog/insertArticle.do
 
 ### 请求方法
 __get__
@@ -152,8 +152,8 @@ __get__
 ```
 ## 修改博客接口
 ### 接口URL
-* 线上环境: http://online/v1/zx_xyb_common.getCode
-* 线下环境: http://10.20.17.61/v1/zx_xyb_common.getCode
+* 线上环境: http://online/blog/updateArticle.do
+* 线下环境: http://10.20.17.61/blog/updateArticle.do
 
 ### 请求方法
 __get__
@@ -189,8 +189,8 @@ __get__
 ```
 ## 删除博客接口
 ### 接口URL
-* 线上环境: http://online/v1/zx_xyb_common.checkCode
-* 线下环境: http://10.20.17.61/v1/zx_xyb_common.checkCode
+* 线上环境: http://online/blog/deleteArticle.do
+* 线下环境: http://10.20.17.61/blog/deleteArticle.do
 
 ### 请求方法
 __get__
@@ -224,8 +224,8 @@ __get__
 
 ## 登出接口
 ### 接口URL
-* 线上环境: http://online/v1/zx_xyb_account.logout
-* 线下环境: http://10.20.17.61/v1/zx_xyb_account.logout
+* 线上环境: http://online/blog/logout.do
+* 线下环境: http://10.20.17.61/blog/logout.do
 
 ### 请求方法
 __get__
