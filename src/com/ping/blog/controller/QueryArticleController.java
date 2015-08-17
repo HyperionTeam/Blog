@@ -30,7 +30,11 @@ public class QueryArticleController extends BaseController {
 				buildResponse(modelMap, ResponseEnum.FAILURE);
 				return modelMap;
 			}
-			buildResponse(modelMap, ResponseEnum.SUCCESS, list);
+			
+			Map<String, Object> articlesModel = new HashMap<String, Object>();
+			articlesModel.put("acticleInfos", list);
+			articlesModel.put("pageNumber", pageNumber);
+			buildResponse(modelMap, ResponseEnum.SUCCESS, articlesModel);
 		} catch (Exception e) {
 			e.printStackTrace();
 			buildResponse(modelMap, ResponseEnum.FAILURE);
