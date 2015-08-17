@@ -5,8 +5,8 @@
 
 ## 登录接口
 ### 接口URL
-* 线上环境: http://online/blog/login.do
-* 线下环境: http://10.20.17.61/blog/login.do
+* 线上环境: http://online/Blog/login.do
+* 线下环境: http://10.20.17.61/Blog/login.do
 
 ### 请求方法
 __post__
@@ -20,7 +20,7 @@ __post__
 
 |名称|类型|说明|必须存在|
 |----|----|----|--------|
-|code|string|错误码<br>10,1000,1001,1004|Y|
+|code|string|错误码|Y|
 |msg|string|错误信息|Y|
 |user|object|用户信息体|Y|
 
@@ -57,8 +57,8 @@ __post__
 
 ## 博客列表接口
 ### 接口URL
-* 线上环境: http://online/blog/queryArticles.do
-* 线下环境: http://10.20.17.61/blog/queryArticles.do
+* 线上环境: http://online/Blog/queryArticles.do
+* 线下环境: http://10.20.17.61/Blog/queryArticles.do
 
 ### 请求方法
 __get__
@@ -116,8 +116,8 @@ __get__
 
 ## 插入博客接口
 ### 接口URL
-* 线上环境: http://online/blog/insertArticle.do
-* 线下环境: http://10.20.17.61/blog/insertArticle.do
+* 线上环境: http://online/Blog/insertArticle.do
+* 线下环境: http://10.20.17.61/Blog/insertArticle.do
 
 ### 请求方法
 __get__
@@ -150,8 +150,8 @@ __get__
 ```
 ## 修改博客接口
 ### 接口URL
-* 线上环境: http://online/blog/updateArticle.do
-* 线下环境: http://10.20.17.61/blog/updateArticle.do
+* 线上环境: http://online/Blog/updateArticle.do
+* 线下环境: http://10.20.17.61/Blog/updateArticle.do
 
 ### 请求方法
 __get__
@@ -183,8 +183,8 @@ __get__
 ```
 ## 删除博客接口
 ### 接口URL
-* 线上环境: http://online/blog/deleteArticle.do
-* 线下环境: http://10.20.17.61/blog/deleteArticle.do
+* 线上环境: http://online/Blog/deleteArticle.do
+* 线下环境: http://10.20.17.61/Blog/deleteArticle.do
 
 ### 请求方法
 __get__
@@ -214,32 +214,6 @@ __get__
 ```
 
 
-## 登出接口
-### 接口URL
-* 线上环境: http://online/blog/logout.do
-* 线下环境: http://10.20.17.61/blog/logout.do
 
-### 请求方法
-__get__
-### 请求参数
-
-|名称|类型|说明|是否必须|
-|----|----|----|--------|
-|userName|string|用户名|Y|
-### 返回参数
-
-|名称|类型|说明|必须存在|
-|----|----|----|--------|
-|code|string|错误码|Y|
-|msg|string|错误信息|Y|
-
-### 返回值内容实例
-
-```
-{
-	"code" : "0",
-	"msg" : "Operation Success!"
-}
-```
 
 
