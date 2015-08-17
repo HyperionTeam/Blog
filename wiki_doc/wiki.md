@@ -54,6 +54,7 @@ __post__
 ```
 
 
+
 ## 博客列表接口
 ### 接口URL
 * 线上环境: http://online/blog/queryArticles.do
@@ -128,8 +129,7 @@ __get__
 |titile|string|标题|Y|
 |tag|string|标签|Y|
 |content|string|内容|Y|
-|createTime|string|创建时间|Y|
-|author|string|作者|Y|
+|userName|string|作者|Y|
 
 ### 返回参数
 
@@ -145,9 +145,7 @@ __get__
 {
 	"code" : "0",
 	"msg" : "Operation Success!",
-	"data" : {
-		"decription" : "insert success",
-	}
+	
 }
 ```
 ## 修改博客接口
@@ -165,7 +163,6 @@ __get__
 |titile|string|标题|Y|
 |tag|string|标签|Y|
 |content|string|内容|Y|
-|updateTime|string|修改时间|Y|
 |userName|string|用户名|Y|
 
 ### 返回参数
@@ -182,9 +179,6 @@ __get__
 {
 	"code" : "0",
 	"msg" : "Operation Success!",
-	"data" : {
-		"decription" : "update success",
-	}
 }
 ```
 ## 删除博客接口
@@ -215,9 +209,7 @@ __get__
 {
 	"code" : "0",
 	"msg" : "Operation Success!",
-	"data" : {
-		"decription" : "delete success",
-	}
+	
 }
 ```
 
@@ -249,4 +241,5 @@ __get__
 	"msg" : "Operation Success!"
 }
 ```
+
 
