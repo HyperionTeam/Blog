@@ -71,8 +71,8 @@ public class ArticleDaoImpl implements ArticleDao {
 	public List<Article> queryArticleByPageNumber(int pageNumber) {
 		// TODO Auto-generated method stub
 		connection = DBConnection.getConnection();
-		String sql = "select * from articles limit "+pageNumber*10+", 10";
-		System.out.println("sql---------------------->"+sql);
+		String sql = "select * from articles limit " + pageNumber * 10 + ", 10";
+		System.out.println("sql---------------------->" + sql);
 		Statement statement = null;
 		ResultSet rs = null;
 		List<Article> list = new ArrayList<Article>();
@@ -110,21 +110,59 @@ public class ArticleDaoImpl implements ArticleDao {
 			}
 
 		}
-		return list;	
+		return list;
 	}
 
 	public boolean updateArticle(Article article) {
 		// TODO Auto-generated method stub
 		String sql = "update articles set title='" + article.getTitle() + "', tag='" + article.getTag() + "', content='"
-				+ article.getContent() + "', updateTime='" + article.getUpdateTime() +"' "+ "where articleId=" + article.getArticleId();
-		System.out.println("sql---------------->"+sql);
+				+ article.getContent() + "', updateTime='" + article.getUpdateTime() + "' " + "where articleId="
+				+ article.getArticleId();
+		System.out.println("sql---------------->" + sql);
 		return DBConnection.excuteSql(sql);
 	}
 
 	public boolean deleteArticleById(int articleId) {
 		// TODO Auto-generated method stub
-		String sql = "delete from articles where articleId="+articleId+"";
-		System.out.println("sql---------------->"+sql);
-		return DBConnection.excuteSql(sql);	}
+		String sql = "delete from articles where articleId=" + articleId + "";
+		System.out.println("sql---------------->" + sql);
+		return DBConnection.excuteSql(sql);
+	}
+
+	public int queryArticleAmount() {
+		// TODO Auto-generated method stub
+
+		String sql = "select count(*) from articles";
+		connection = DBConnection.getConnection();
+		System.out.println("sql---------------------->" + sql);
+		Statement statement = null;
+		ResultSet rs = null;
+		int amount = 0;
+		try {
+			statement = connection.createStatement();
+			rs = statement.executeQuery(sql);
+			if (rs.next()) {
+				amount = rs.getInt(1);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null) {
+					rs.close();
+				}
+				if (statement != null) {
+					statement.close();
+				}
+				DBConnection.closeConnection();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+		}
+
+		return amount;
+	}
 
 }

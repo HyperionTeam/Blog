@@ -33,7 +33,8 @@ public class DBConnection {
 	public static void closeConnection() {
 
 		try {
-			conn.close();
+			if (conn != null)
+				conn.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -46,7 +47,7 @@ public class DBConnection {
 		Statement statement = null;
 		try {
 			statement = conn.createStatement();
-			 statement.execute(sql);
+			statement.execute(sql);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

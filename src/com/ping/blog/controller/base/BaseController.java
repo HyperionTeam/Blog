@@ -23,6 +23,7 @@ public abstract class BaseController extends HttpServlet{
 	    Map<String, Object> map = doService(req,resp);
 	    Gson gson = new Gson();
 		String json =  gson.toJson(map);
+		System.out.println("返回的json数据--------------------->"+json);
 		resp.getWriter().write(json);
 	}
 	
@@ -32,6 +33,7 @@ public abstract class BaseController extends HttpServlet{
 		Map<String, Object> map = doService(req,resp);
 		Gson gson = new Gson();
 		String json =  gson.toJson(map);
+		System.out.println("返回的json数据--------------------->"+json);
 		resp.getWriter().write(json);
 	}
 

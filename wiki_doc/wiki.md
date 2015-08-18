@@ -78,6 +78,7 @@ __get__
 |msg|string|错误信息|Y|
 |articleInfos|object[]|博客信息|Y|
 |pageNumber|String|分页编号|Y|
+|totalAmount|String|文章总数|Y|
 
 其中*articleInfos*里面的字段如下所示:
 
@@ -109,7 +110,8 @@ __get__
 		     "author":"tiancong",
 		   }
 		],
-		"pageNumber":"3",	
+		"pageNumber":"3",
+		"totalAmount":"100",	
 	}
 }
 ```

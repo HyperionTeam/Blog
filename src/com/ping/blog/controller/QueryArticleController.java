@@ -34,6 +34,8 @@ public class QueryArticleController extends BaseController {
 			Map<String, Object> articlesModel = new HashMap<String, Object>();
 			articlesModel.put("acticleInfos", list);
 			articlesModel.put("pageNumber", pageNumber);
+			int totalAmount =  articleDao.queryArticleAmount();
+			articlesModel.put("totalAmount", totalAmount);
 			buildResponse(modelMap, ResponseEnum.SUCCESS, articlesModel);
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -11,4 +11,5 @@ public interface ArticleDao {
 	public List<Article> queryArticleByPageNumber(int pageNumber);
 	public boolean updateArticle(Article article);
 	public boolean deleteArticleById(int articleId);
+	public int queryArticleAmount();
 }
