@@ -12,6 +12,7 @@ import com.ping.blog.common.ResponseEnum;
 import com.ping.blog.controller.base.BaseController;
 import com.ping.blog.dao.ArticleDao;
 import com.ping.blog.daoimpl.ArticleDaoImpl;
+import com.ping.blog.util.StringUtil;
 
 public class DeleteArticleController extends BaseController {
 
@@ -22,6 +23,11 @@ public class DeleteArticleController extends BaseController {
 		Map<String, Object> modelMap = new HashMap<String, Object>();
 		String articleId = req.getParameter("articleId");
 		try {
+			
+			if (StringUtil.isBlank(articleId)) {
+				buildResponse(modelMap, ResponseEnum.FAILURE);
+				return modelMap;
+			}
 			ArticleDao articleDao = new ArticleDaoImpl();
 			if (!articleDao.deleteArticleById(Integer.parseInt(articleId))) {
 				buildResponse(modelMap, ResponseEnum.FAILURE);

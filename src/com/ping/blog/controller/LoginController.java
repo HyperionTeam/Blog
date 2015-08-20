@@ -16,6 +16,7 @@ import com.google.gson.Gson;
 import com.ping.blog.common.ResponseEnum;
 import com.ping.blog.controller.base.BaseController;
 import com.ping.blog.daoimpl.UserDaoImpl;
+import com.ping.blog.util.StringUtil;
 import com.ping.blog.vo.User;
 
 public class LoginController extends BaseController {
@@ -31,6 +32,10 @@ public class LoginController extends BaseController {
 		String password = req.getParameter("password");
 		UserDaoImpl userDaoImpl = new UserDaoImpl();
 		try {
+			if (StringUtil.isBlank(userName) || StringUtil.isBlank(password) ) {
+				buildResponse(modelMap, ResponseEnum.FAILURE);
+				return modelMap;
+			}
 			User user = userDaoImpl.queryUserByUserName(userName);
 
 			// 账号不存在

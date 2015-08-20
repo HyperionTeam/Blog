@@ -14,6 +14,7 @@ import com.ping.blog.common.ResponseEnum;
 import com.ping.blog.controller.base.BaseController;
 import com.ping.blog.dao.ArticleDao;
 import com.ping.blog.daoimpl.ArticleDaoImpl;
+import com.ping.blog.util.StringUtil;
 import com.ping.blog.vo.Article;
 
 public class InsertArticleController extends BaseController {
@@ -29,6 +30,12 @@ public class InsertArticleController extends BaseController {
 		String author = req.getParameter("userName");
 		// String createTime = req.getParameter("createTime");
 		try {
+			
+			if (StringUtil.isBlank(author) || StringUtil.isBlank(title) || StringUtil.isBlank(tag)
+					|| StringUtil.isBlank(content)) {
+				buildResponse(modelMap, ResponseEnum.FAILURE);
+				return modelMap;
+			}
 			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			String createTime = format.format(new Date());
 			Article article = new Article();

@@ -13,6 +13,7 @@ import com.ping.blog.common.ResponseEnum;
 import com.ping.blog.controller.base.BaseController;
 import com.ping.blog.dao.ArticleDao;
 import com.ping.blog.daoimpl.ArticleDaoImpl;
+import com.ping.blog.util.StringUtil;
 import com.ping.blog.vo.Article;
 
 public class QueryArticleController extends BaseController {
@@ -25,6 +26,10 @@ public class QueryArticleController extends BaseController {
 		String pageNumber = req.getParameter("pageNumber");
 		ArticleDao articleDao = new ArticleDaoImpl();
 		try {
+			if (StringUtil.isBlank(pageNumber)) {
+				buildResponse(modelMap, ResponseEnum.FAILURE);
+				return modelMap;
+			}
 			List<Article> list = articleDao.queryArticleByPageNumber(Integer.parseInt(pageNumber));
 			if (list == null || list.isEmpty()) {
 				buildResponse(modelMap, ResponseEnum.FAILURE);

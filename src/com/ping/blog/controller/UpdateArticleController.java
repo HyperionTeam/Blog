@@ -14,6 +14,7 @@ import com.ping.blog.common.ResponseEnum;
 import com.ping.blog.controller.base.BaseController;
 import com.ping.blog.dao.ArticleDao;
 import com.ping.blog.daoimpl.ArticleDaoImpl;
+import com.ping.blog.util.StringUtil;
 import com.ping.blog.vo.Article;
 
 public class UpdateArticleController extends BaseController {
@@ -27,8 +28,14 @@ public class UpdateArticleController extends BaseController {
 		String title = req.getParameter("title");
 		String tag = req.getParameter("tag");
 		String content = req.getParameter("content");
-		String author = req.getParameter("author");
 		try {
+
+			if (StringUtil.isBlank(articleId) || StringUtil.isBlank(title) || StringUtil.isBlank(tag)
+					|| StringUtil.isBlank(content)) {
+				buildResponse(modelMap, ResponseEnum.FAILURE);
+				return modelMap;
+			}
+
 			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			String updateTime = format.format(new Date());
 			Article article = new Article();
@@ -37,11 +44,10 @@ public class UpdateArticleController extends BaseController {
 			article.setTag(tag);
 			article.setContent(content);
 			article.setUpdateTime(updateTime);
-			article.setAuthor(author);
 			ArticleDao articleDao = new ArticleDaoImpl();
 			if (!articleDao.updateArticle(article)) {
 				buildResponse(modelMap, ResponseEnum.FAILURE);
-
+				return modelMap;
 			}
 			buildResponse(modelMap, ResponseEnum.SUCCESS);
 		} catch (Exception e) {

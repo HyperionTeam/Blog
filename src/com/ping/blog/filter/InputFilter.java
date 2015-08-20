@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import com.google.gson.Gson;
 import com.ping.blog.common.ResponseEnum;
 import com.ping.blog.util.CalendarUtil;
+import com.ping.blog.util.StringUtil;
 
 public class InputFilter implements Filter {
 
@@ -33,12 +34,18 @@ public class InputFilter implements Filter {
 		String path = HttpServletRequest.class.cast(req).getServletPath();
 		if ("/insertArticle.do".contains(path) || "/updateArticle.do".contains(path)
 				|| "/deleteArticle.do".contains(path)) {
-			String loginTimeStr = (String) req.getServletContext().getAttribute(userName);
-			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
 			try {
+				String loginTimeStr = null;
+				if (!StringUtil.isBlank(userName)) {
+					loginTimeStr = (String) req.getServletContext().getAttribute(userName);
+				}
+				SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 				if (loginTimeStr == null || "".equals(loginTimeStr)
 						|| CalendarUtil.isAfterHalfHour(dateFormat.parse(loginTimeStr))) {
-					req.getServletContext().removeAttribute(userName);
+					if (!StringUtil.isBlank(userName)) {
+						req.getServletContext().removeAttribute(userName);
+					}
 					Map<String, Object> map = new HashMap<String, Object>();
 					ResponseEnum responseEnum = ResponseEnum.FAILURE;
 					responseEnum.setMessage("please login");
@@ -51,9 +58,19 @@ public class InputFilter implements Filter {
 
 				}
 
-			} catch (ParseException e) {
+		} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+				Map<String, Object> map = new HashMap<String, Object>();
+				ResponseEnum responseEnum = ResponseEnum.FAILURE;
+				responseEnum.setMessage("please login");
+				map.put("code", responseEnum.getCode());
+				map.put("msg", responseEnum.getMessage());
+				Gson gson = new Gson();
+				String json = gson.toJson(map);
+				resp.getWriter().write(json);
+				return;
+
 			}
 		}
 		chain.doFilter(req, resp);
